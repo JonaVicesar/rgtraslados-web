@@ -1,0 +1,209 @@
+/* ==================================
+   BREAKPOINTS PRINCIPALES
+   ================================== */
+   
+/* Escritorio Grande (1200px+) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+/* Tablets y Escritorio Pequeño (768px - 1199px) */
+@media (max-width: 1199px) {
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+    
+    .services-grid,
+    .cars-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .cars-grid {
+        padding: 0 1rem;
+    }
+}
+
+/* Tablets (480px - 768px) */
+@media (max-width: 768px) {
+    /* Header y Hero */
+    .hero {
+        padding: 4rem 0;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    /* Navegación */
+    .menu-toggle {
+        top: 15px;
+        left: 15px;
+        width: 45px;
+        height: 45px;
+    }
+    
+    .menu-toggle span {
+        width: 25px;
+    }
+
+    /* Secciones Principales */
+    .services-section,
+    .fleet-section,
+    .map-section,
+    .acerca-section {
+        padding: 4rem 1rem;
+    }
+    
+    .service-card {
+        padding: 1.5rem;
+    }
+    
+    .service-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .cars-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .map-container {
+        height: 400px;
+    }
+
+    /* Contenido "Quiénes Somos" */
+    .acerca-content h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .acerca-content p {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    .acerca-list {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .acerca-list li {
+        font-size: 1rem;
+        line-height: 1.5;
+        padding-left: 20px;
+    }
+
+    .acerca-list li::before {
+        font-size: 1.2rem;
+    }
+
+    /* Contacto y Formulario */
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-item {
+        padding: 1.5rem;
+    }
+
+    .contact-form-section {
+        padding: 1.5rem;
+    }
+
+    .form-title {
+        font-size: 1.8rem;
+    }
+
+    .form-subtitle {
+        font-size: 1rem;
+    }
+
+    .contact-form-container {
+        padding: 1.5rem;
+    }
+
+    .contact-form-container button {
+        font-size: 1rem;
+    }
+
+    /* WhatsApp Flotante */
+    .whatsapp-float {
+        width: 40px;  
+        height: 40px;
+        bottom: 10px;
+        right: 10px;
+    }
+}
+
+/* Móviles (hasta 480px) */
+@media (max-width: 480px) {
+    /* Header y Hero */
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+
+    /* Navegación */
+    .menu-toggle {
+        padding: 10px;
+        font-size: 1rem;
+    }
+    
+    .offcanvas-menu {
+        width: 250px;
+    }
+
+    /* Contenido "Quiénes Somos" */
+    .acerca-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .acerca-content p,
+    .acerca-list li {
+        font-size: 0.9rem;
+    }
+
+    .acerca-list li {
+        padding-left: 15px;
+    }
+
+    .acerca-list li::before {
+        font-size: 1rem;
+    }
+
+    /* Servicios y Contacto */
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    form {
+        padding: 1.5rem;
+    }
+    
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .social-icons {
+        flex-wrap: wrap;
+    }
+}
+
+/* Ajustes de Altura */
+@media (max-height: 600px) {
+    .hero {
+        height: auto;
+        min-height: 100vh;
+        padding: 4rem 0;
+    }
+}
