@@ -302,7 +302,7 @@ body {
     transform: translateX(var(--menu-width));
 }
 
-/* Hero Section */
+/* Seccion Hero */
 .hero {
     position: relative;
     height: 100vh;
@@ -689,8 +689,8 @@ body {
 }
 */
 
-/* Services Section - Enhanced Version */
-/* Services Section */
+
+/* Seccion Servicios */
 .services-section {
     padding: 6rem 2rem;
     background-color: #fff;
@@ -868,7 +868,7 @@ body {
 
 
 
-/* Contact Section */
+/* Seccion COntacto */
 .contact-section {
     padding: 6rem 2rem;
     background: linear-gradient(to bottom, #f9f9f9, #ffffff);
