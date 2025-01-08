@@ -654,7 +654,7 @@ body {
 }
 
 /* === Sección del Mapa === */
-/*.map-section {
+.map-section {
     padding: 6rem 2rem;
     background: linear-gradient(to bottom, #ffffff, #f4f4f4);
     position: relative;
@@ -687,7 +687,7 @@ body {
     mix-blend-mode: multiply;
     pointer-events: none;
 }
-*/
+
 
 
 /* Seccion Servicios */
