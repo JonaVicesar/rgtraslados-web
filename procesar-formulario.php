@@ -4,7 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = htmlspecialchars($_POST['email']);
     $message = htmlspecialchars($_POST['message']);
 
-    $to = 'jonathanrafaelvicesar@gmail.com'; 
+    $to = 'rgtraslados01@gmail.com'; 
     $subject = 'Nuevo mensaje desde el formulario de contacto';
     $body = "Nombre: $name\nCorreo: $email\nMensaje:\n$message";
     $headers = "From: no-reply@tudominio.com";
