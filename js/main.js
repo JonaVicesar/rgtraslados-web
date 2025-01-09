@@ -303,3 +303,22 @@ function animateContent() {
     document.querySelectorAll('.acerca-content, .animate')
         .forEach(element => observer.observe(element));
 }
+
+
+function handleHeaderScroll() {
+    const header = document.querySelector('.main-header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', handleHeaderScroll);
+
+document.querySelector('.logo').addEventListener('click', () => {
+    const logo = document.querySelector('.logo');
+    logo.classList.toggle('active');
+});
