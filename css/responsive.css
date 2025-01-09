@@ -138,6 +138,19 @@
 }
 
 /* Móviles (hasta 480px) */
+
+@media (max-width: 480px) {
+    .main-header {
+        top: 8px;
+        left: 50px; 
+    }
+
+    .logo {
+        height: 50px; 
+    }
+}
+
+@media (max-width: 480px) {
 @media (max-width: 480px) {
     /* Header y Hero */
     .hero h1 {
@@ -204,18 +217,3 @@
     }
 }
 
-
-@media (max-width: 480px) {
-    .hero-text h1 {
-        font-size: 2.5rem;
-    }
-
-    .title {
-        font-size: 1.5rem;
-    }
-
-    .profile-image {
-        width: 250px;
-        height: 250px;
-    }
-}
