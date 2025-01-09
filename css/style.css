@@ -302,6 +302,46 @@ body {
     transform: translateX(var(--menu-width));
 }
 
+/* Header */
+/*Header Section*/
+
+.main-header {
+    position: absolute;
+    top: 15px;
+    left: 60px; /* Ajusta para colocar el logo al costado */
+    z-index: 10; /* Asegúrate de que esté sobre el hero */
+    background: none; /* Sin fondo */
+    padding: 0; /* Quita el padding */
+}
+
+.logo {
+    height: 60px; /* Tamaño inicial del logo */
+    transition: height 0.3s ease, transform 0.3s ease;
+}
+
+.main-header.scrolled .logo {
+    height: 40px; 
+    transform: translateY(-10px);
+}
+
+.logo {
+    height: 60px;
+    transition: height 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+    cursor: pointer; 
+}
+
+.logo:hover {
+    transform: scale(1.05); 
+    filter: invert(41%) sepia(79%) saturate(420%) hue-rotate(8deg) brightness(99%) contrast(98%);
+    box-shadow: 0 4px 15px --secondary;
+}
+
+.logo.active {
+    transform: rotate(360deg);
+    transition: transform 0.5s ease;
+}
+
+
 /* Seccion Hero */
 .hero {
     position: relative;
