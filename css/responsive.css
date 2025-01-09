@@ -1,7 +1,3 @@
-/* ==================================
-   BREAKPOINTS PRINCIPALES
-   ================================== */
-   
 /* Escritorio Grande (1200px+) */
 @media (min-width: 1200px) {
     .container {
@@ -205,5 +201,21 @@
         height: auto;
         min-height: 100vh;
         padding: 4rem 0;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .profile-image {
+        width: 250px;
+        height: 250px;
     }
 }
