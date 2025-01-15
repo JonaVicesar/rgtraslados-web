@@ -1,7 +1,3 @@
-// ===============================
-// CONFIGURACIÓN Y CONSTANTES
-// ===============================
-
 const CONFIG = {
     preloader: {
         minDisplayTime: 2000,
@@ -29,9 +25,7 @@ const CONFIG = {
     }
 };
 
-// ===============================
 // INICIALIZACIÓN PRINCIPAL
-// ===============================
 
 document.addEventListener('DOMContentLoaded', function() {
     initializePreloader();
@@ -45,9 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
     animateContent();
 });
 
-// ===============================
-// GESTIÓN DEL PRELOADER
-// ===============================
+// PRELOADER
 
 function initializePreloader() {
     const preloader = document.getElementById('preloader');
@@ -68,10 +60,7 @@ function initializePreloader() {
     });
 }
 
-// ===============================
-// GESTIÓN DEL MENÚ
-// ===============================
-
+// MENÚ
 function initializeMenu() {
     const elements = {
         menuToggle: document.querySelector('.menu-toggle'),
@@ -115,9 +104,7 @@ function initializeMenu() {
     });
 }
 
-// ===============================
 // EFECTOS DE SCROLL
-// ===============================
 
 function initializeScrollEffects() {
     const scrollHandlers = {
@@ -147,10 +134,7 @@ function initializeScrollEffects() {
     window.addEventListener('scroll', scrollHandlers.parallaxEffect);
 }
 
-// ===============================
 // INICIALIZACIÓN DEL SWIPER
-// ===============================
-
 function initializeSwiperSlider() {
     return new Swiper('.swiper-container', {
         ...CONFIG.swiper,
@@ -171,9 +155,7 @@ function initializeSwiperSlider() {
     });
 }
 
-// ===============================
-// SISTEMA DE ANIMACIONES
-// ===============================
+// ANIMACIONES
 
 function initializeAnimations() {
     const observer = new IntersectionObserver(
@@ -189,10 +171,7 @@ function initializeAnimations() {
     document.querySelectorAll('.animate').forEach(el => observer.observe(el));
 }
 
-// ===============================
 // LAZY LOADING
-// ===============================
-
 function initializeLazyLoading() {
     const imageObserver = new IntersectionObserver(
         (entries, observer) => {
@@ -216,9 +195,7 @@ function initializeLazyLoading() {
     document.querySelectorAll('[data-src]').forEach(img => imageObserver.observe(img));
 }
 
-// ===============================
 // BARRA DE PROGRESO Y EVENTOS
-// ===============================
 
 function initializeScrollProgress() {
     const progressBar = document.createElement('div');
@@ -264,10 +241,7 @@ function setupEventListeners() {
     });
 }
 
-// ===============================
 // FORMULARIO DE CONTACTO
-// ===============================
-
 document.getElementById('contact-form')?.addEventListener('submit', function(e) {
     e.preventDefault();
     
@@ -286,10 +260,7 @@ document.getElementById('contact-form')?.addEventListener('submit', function(e) 
     });
 });
 
-// ===============================
 // ANIMACIONES DE CONTENIDO
-// ===============================
-
 function animateContent() {
     const observer = new IntersectionObserver(
         entries => entries.forEach(entry => {
