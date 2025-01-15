@@ -244,7 +244,7 @@ body {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* Estilo para el botón en scroll */
+/* Estilo para el boton en scroll */
 .menu-toggle.scrolled {
     background: var(--primary);
 }
@@ -303,8 +303,6 @@ body {
 }
 
 /* Header */
-/*Header Section*/
-
 .main-header {
     position: absolute;
     top: 15px;
@@ -463,7 +461,7 @@ body {
     }
 }
 
-/* Sección "Quiénes Somos" */
+/* Sección quienes somos */
 .acerca-section {
     padding: 6rem 2rem;
     background: linear-gradient(to bottom right, #ffffff, #f9f9f9);
@@ -610,7 +608,7 @@ body {
 }
 
 
-/* Fleet Section */
+/* Seccion Flota */
 .fleet-section {
     padding: 6rem 2rem;
     background: #f9f9f9;
@@ -855,7 +853,7 @@ body {
     transform: translateX(5px);
 }
 
-/* Animations */
+/* Animaciones */
 .animate {
     opacity: 0;
     animation: fadeInUp 0.6s ease forwards;
@@ -972,7 +970,7 @@ body {
     line-height: 1.6;
 }
 
-/* === Formulario de Contacto === */
+/* Formulario de Contacto */
 .contact-form-section {
     text-align: center;
     margin: 4rem 0;
