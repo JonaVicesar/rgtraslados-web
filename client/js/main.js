@@ -1,3 +1,61 @@
+const contactForm = document.getElementById('contact-form');
+
+let fullName = document.getElementById('fullName');
+let email = document.getElementById('email');
+let message = document.getElementById('message');
+let submitButton = contactForm.querySelector('button[type="submit"]');
+
+contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    submitButton.textContent = 'Enviando...';
+    submitButton.style.backgroundColor = '#ccc';
+    submitButton.style.cursor = 'not-allowed';
+    submitButton.disabled = true;
+
+    let formData = {
+        "name": fullName.value,
+        "email": email.value,
+        "message": message.value
+    }
+
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', '/', true);
+
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.onload = function () {
+        console.log(xhr.responseText);
+        if (xhr.responseText === 'success') {
+            alert('¡Mensaje Enviado!');
+            fullName.value = '';
+            email.value = '';
+            message.value = '';
+        } else {
+            alert('Algo ha salido mal');
+        }
+
+        // Reset button style and enable it
+        submitButton.textContent = 'Enviar';
+        submitButton.style.backgroundColor = '';
+        submitButton.style.cursor = '';
+        submitButton.disabled = false;
+    };
+
+    xhr.onerror = function () {
+        alert('Hubo un error al enviar el mensaje');
+
+        // Reset button style and enable it
+        submitButton.textContent = 'Enviar';
+        submitButton.style.backgroundColor = '';
+        submitButton.style.cursor = '';
+        submitButton.disabled = false;
+    };
+
+    xhr.send(JSON.stringify(formData));
+});
+
+
 const CONFIG = {
     preloader: {
         minDisplayTime: 2000,
@@ -25,9 +83,9 @@ const CONFIG = {
     }
 };
 
-// INICIALIZACIÓN PRINCIPAL
+// // INICIALIZACIÓN PRINCIPAL
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initializePreloader();
     initializeMenu();
     initializeScrollEffects();
@@ -39,20 +97,18 @@ document.addEventListener('DOMContentLoaded', function() {
     animateContent();
 });
 
-// PRELOADER
+// // PRELOADER
 
 function initializePreloader() {
     const preloader = document.getElementById('preloader');
     const startTime = Date.now();
-
-    window.addEventListener('load', function() {
+    window.addEventListener('load', function () {
         const elapsedTime = Date.now() - startTime;
         const remainingTime = Math.max(0, CONFIG.preloader.minDisplayTime - elapsedTime);
-
         setTimeout(() => {
             preloader.style.opacity = '0';
             preloader.style.transition = 'opacity 0.5s ease-out';
-            
+
             setTimeout(() => {
                 preloader.style.display = 'none';
             }, CONFIG.preloader.fadeOutTime);
@@ -70,7 +126,6 @@ function initializeMenu() {
         mainContent: document.querySelector('.main-content'),
         menuLinks: document.querySelectorAll('.menu-links a')
     };
-
     const menuActions = {
         open: () => {
             elements.menu.classList.add('active');
@@ -85,12 +140,10 @@ function initializeMenu() {
             elements.menuToggle.classList.remove('hidden');
         }
     };
-
     // Event Listeners
     elements.menuToggle.addEventListener('click', menuActions.open);
     elements.menuClose.addEventListener('click', menuActions.close);
     elements.overlay.addEventListener('click', menuActions.close);
-
     // Smooth scroll para enlaces del menú
     elements.menuLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -114,7 +167,6 @@ function initializeScrollEffects() {
             const threshold = window.innerHeight * 0.3;
 
             heroSection.classList.toggle('scrolled', scrollPosition > threshold);
-
             const heroBackground = heroSection.querySelector('.hero::after');
             if (heroBackground) {
                 const scaleAmount = 1 + scrollPosition / 1000;
@@ -134,7 +186,7 @@ function initializeScrollEffects() {
     window.addEventListener('scroll', scrollHandlers.parallaxEffect);
 }
 
-// INICIALIZACIÓN DEL SWIPER
+// // INICIALIZACIÓN DEL SWIPER
 function initializeSwiperSlider() {
     return new Swiper('.swiper-container', {
         ...CONFIG.swiper,
@@ -155,7 +207,7 @@ function initializeSwiperSlider() {
     });
 }
 
-// ANIMACIONES
+// // ANIMACIONES
 
 function initializeAnimations() {
     const observer = new IntersectionObserver(
@@ -171,7 +223,7 @@ function initializeAnimations() {
     document.querySelectorAll('.animate').forEach(el => observer.observe(el));
 }
 
-// LAZY LOADING
+// // LAZY LOADING
 function initializeLazyLoading() {
     const imageObserver = new IntersectionObserver(
         (entries, observer) => {
@@ -191,7 +243,6 @@ function initializeLazyLoading() {
         image.src = src;
         image.removeAttribute('data-src');
     }
-
     document.querySelectorAll('[data-src]').forEach(img => imageObserver.observe(img));
 }
 
@@ -212,7 +263,7 @@ function initializeScrollProgress() {
 function setupEventListeners() {
     // Scroll suave global
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetElement = document.querySelector(this.getAttribute('href'));
             if (targetElement) {
@@ -241,25 +292,24 @@ function setupEventListeners() {
     });
 }
 
-// FORMULARIO DE CONTACTO
-document.getElementById('contact-form')?.addEventListener('submit', function(e) {
+// // FORMULARIO DE CONTACTO
+document.getElementById('contact-form')?.addEventListener('submit', function (e) {
     e.preventDefault();
-    
+
     fetch('procesar-formulario.php', {
         method: 'POST',
         body: new FormData(this)
     })
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('form-response').textContent = data;
-        this.reset();
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        document.getElementById('form-response').textContent = 'Hubo un problema al enviar el mensaje.';
-    });
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('form-response').textContent = data;
+            this.reset();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('form-response').textContent = 'Hubo un problema al enviar el mensaje.';
+        });
 });
-
 // ANIMACIONES DE CONTENIDO
 function animateContent() {
     const observer = new IntersectionObserver(
@@ -288,7 +338,6 @@ function handleHeaderScroll() {
 }
 
 document.addEventListener('DOMContentLoaded', handleHeaderScroll);
-
 document.querySelector('.logo').addEventListener('click', () => {
     const logo = document.querySelector('.logo');
     logo.classList.toggle('active');
