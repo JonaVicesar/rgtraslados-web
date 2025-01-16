@@ -1,0 +1,4 @@
+name = "rg-traslados"
+type = "javascript"
+account_id = "9361b8815991f9cd2905a147084e3fdf"
+workers_dev = true
