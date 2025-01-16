@@ -35,6 +35,7 @@ contactForm.addEventListener('submit', (e) => {
             alert('Algo ha salido mal');
         }
         
+        // Reset button style and enable it
         submitButton.textContent = 'Enviar';
         submitButton.style.backgroundColor = '';
         submitButton.style.cursor = '';
@@ -55,111 +56,106 @@ contactForm.addEventListener('submit', (e) => {
 });
 
 
-// const CONFIG = {
-//     preloader: {
-//         minDisplayTime: 2000,
-//         fadeOutTime: 500
-//     },
-//     swiper: {
-//         slidesPerView: 1,
-//         spaceBetween: 30,
-//         autoplayDelay: 3000,
-//         breakpoints: {
-//             640: { slidesPerView: 2, spaceBetween: 20 },
-//             968: { slidesPerView: 3, spaceBetween: 30 },
-//             1200: { slidesPerView: 3, spaceBetween: 40 }
-//         }
-//     },
-//     observers: {
-//         animation: {
-//             threshold: 0.2,
-//             rootMargin: '0px'
-//         },
-//         lazyLoad: {
-//             threshold: 0,
-//             rootMargin: '50px'
-//         }
-//     }
-// };
+ const CONFIG = {
+     preloader: {
+         minDisplayTime: 2000,
+         fadeOutTime: 500
+     },
+     swiper: {
+         slidesPerView: 1,
+         spaceBetween: 30,
+         autoplayDelay: 3000,
+         breakpoints: {
+             640: { slidesPerView: 2, spaceBetween: 20 },
+             968: { slidesPerView: 3, spaceBetween: 30 },
+             1200: { slidesPerView: 3, spaceBetween: 40 }
+         }
+     },
+     observers: {
+         animation: {
+             threshold: 0.2,
+             rootMargin: '0px'
+         },
+         lazyLoad: {
+             threshold: 0,
+             rootMargin: '50px'
+         }
+     }
+ };
 
 // // INICIALIZACIÓN PRINCIPAL
 
-// document.addEventListener('DOMContentLoaded', function() {
-//     initializePreloader();
-//     initializeMenu();
-//     initializeScrollEffects();
-//     initializeSwiperSlider();
-//     initializeAnimations();
-//     initializeLazyLoading();
-//     initializeScrollProgress();
-//     setupEventListeners();
-//     animateContent();
-// });
+document.addEventListener('DOMContentLoaded', function() {
+    initializePreloader();
+    initializeMenu();
+    initializeScrollEffects();
+    initializeSwiperSlider();
+    initializeAnimations();
+    initializeLazyLoading();
+    initializeScrollProgress();
+    setupEventListeners();
+    animateContent();
+});
 
 // // PRELOADER
 
-// function initializePreloader() {
-//     const preloader = document.getElementById('preloader');
-//     const startTime = Date.now();
+ function initializePreloader() {
+     const preloader = document.getElementById('preloader');
+     const startTime = Date.now();
+     window.addEventListener('load', function() {
+         const elapsedTime = Date.now() - startTime;
+         const remainingTime = Math.max(0, CONFIG.preloader.minDisplayTime - elapsedTime);
+         setTimeout(() => {
+             preloader.style.opacity = '0';
+             preloader.style.transition = 'opacity 0.5s ease-out';
+          
+             setTimeout(() => {
+                 preloader.style.display = 'none';
+             }, CONFIG.preloader.fadeOutTime);
+         }, remainingTime);
+     });
+ }
 
-//     window.addEventListener('load', function() {
-//         const elapsedTime = Date.now() - startTime;
-//         const remainingTime = Math.max(0, CONFIG.preloader.minDisplayTime - elapsedTime);
-
-//         setTimeout(() => {
-//             preloader.style.opacity = '0';
-//             preloader.style.transition = 'opacity 0.5s ease-out';
-            
-//             setTimeout(() => {
-//                 preloader.style.display = 'none';
-//             }, CONFIG.preloader.fadeOutTime);
-//         }, remainingTime);
-//     });
-// }
-
-// // MENÚ
-// function initializeMenu() {
-//     const elements = {
-//         menuToggle: document.querySelector('.menu-toggle'),
-//         menuClose: document.querySelector('.menu-close'),
-//         menu: document.querySelector('.offcanvas-menu'),
-//         overlay: document.querySelector('.menu-overlay'),
-//         mainContent: document.querySelector('.main-content'),
-//         menuLinks: document.querySelectorAll('.menu-links a')
-//     };
-
-//     const menuActions = {
-//         open: () => {
-//             elements.menu.classList.add('active');
-//             elements.overlay.classList.add('active');
-//             elements.mainContent.classList.add('shifted');
-//             elements.menuToggle.classList.add('hidden');
-//         },
-//         close: () => {
-//             elements.menu.classList.remove('active');
-//             elements.overlay.classList.remove('active');
-//             elements.mainContent.classList.remove('shifted');
-//             elements.menuToggle.classList.remove('hidden');
-//         }
-//     };
-
-//     // Event Listeners
-//     elements.menuToggle.addEventListener('click', menuActions.open);
-//     elements.menuClose.addEventListener('click', menuActions.close);
-//     elements.overlay.addEventListener('click', menuActions.close);
-
-//     // Smooth scroll para enlaces del menú
-//     elements.menuLinks.forEach(link => {
-//         link.addEventListener('click', (e) => {
-//             e.preventDefault();
-//             menuActions.close();
-//             const targetElement = document.querySelector(link.getAttribute('href'));
-//             if (targetElement) {
-//                 targetElement.scrollIntoView({ behavior: 'smooth' });
-//             }
-//         });
-//     });
-// }
+ // MENÚ
+ function initializeMenu() {
+     const elements = {
+         menuToggle: document.querySelector('.menu-toggle'),
+         menuClose: document.querySelector('.menu-close'),
+         menu: document.querySelector('.offcanvas-menu'),
+         overlay: document.querySelector('.menu-overlay'),
+         mainContent: document.querySelector('.main-content'),
+         menuLinks: document.querySelectorAll('.menu-links a')
+     };
+     const menuActions = {
+         open: () => {
+             elements.menu.classList.add('active');
+             elements.overlay.classList.add('active');
+             elements.mainContent.classList.add('shifted');
+             elements.menuToggle.classList.add('hidden');
+         },
+         close: () => {
+             elements.menu.classList.remove('active');
+             elements.overlay.classList.remove('active');
+             elements.mainContent.classList.remove('shifted');
+             elements.menuToggle.classList.remove('hidden');
+         }
+     };
+     // Event Listeners
+     elements.menuToggle.addEventListener('click', menuActions.open);
+     elements.menuClose.addEventListener('click', menuActions.close);
+     elements.overlay.addEventListener('click', menuActions.close);
+     // Smooth scroll para enlaces del menú
+     elements.menuLinks.forEach(link => {
+         link.addEventListener('click', (e) => {
+             e.preventDefault();
+             menuActions.close();
+             const targetElement = document.querySelector(link.getAttribute('href'));
+             if (targetElement) {
+                 targetElement.scrollIntoView({ behavior: 'smooth' });
+             }
+         });
+     });
+ }
 
 // // EFECTOS DE SCROLL
 
